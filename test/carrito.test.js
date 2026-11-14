@@ -19,5 +19,29 @@ assert.equal(carrito.subtotal(), 0);
 });
 
 
+describe('Iteración 2: agregar productos', () => {
+  test('agregar un producto actualiza cantidad y subtotal', () => {
+    carrito.agregar('Mouse', 50000, 2);
+
+    assert.equal(carrito.cantidadDeItems(), 2);
+    assert.equal(carrito.subtotal(), 100000);
+  });
+
+  test('agregar varios productos suma todos los subtotales', () => {
+    carrito.agregar('Mouse', 50000, 2);
+    carrito.agregar('Teclado', 80000, 1);
+
+    assert.equal(carrito.cantidadDeItems(), 3);
+    assert.equal(carrito.subtotal(), 180000);
+  });
+
+  test('si no se indica cantidad, se agrega una unidad', () => {
+    carrito.agregar('Monitor', 500000);
+
+    assert.equal(carrito.cantidadDeItems(), 1);
+    assert.equal(carrito.subtotal(), 500000);
+  });
+});
+
   // Escribe aquí tus pruebas, una iteración a la vez.
 });
