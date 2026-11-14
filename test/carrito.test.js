@@ -84,5 +84,31 @@ describe('Iteración 5: eliminar productos', () => {
   });
 });
 
+
+describe('Iteración 6: cupones de descuento', () => {
+  test('sin cupón el descuento es 0', () => {
+    carrito.agregar('Teclado', 200000, 1);
+    assert.equal(carrito.descuento(), 0);
+  });
+
+  test('el cupón DESC10 descuenta el 10 % del subtotal', () => {
+    carrito.agregar('Teclado', 200000, 1);
+    carrito.aplicarCupon('DESC10');
+    assert.equal(carrito.descuento(), 20000);
+  });
+
+  test('el cupón DESC20 descuenta el 20 % del subtotal', () => {
+    carrito.agregar('Teclado', 200000, 1);
+    carrito.aplicarCupon('DESC20');
+    assert.equal(carrito.descuento(), 40000);
+  });
+
+  test('un cupón inexistente lanza un error', () => {
+    assert.throws(() => carrito.aplicarCupon('GRATIS'), /no es válido/);
+  });
+});
+
+
+
   // Escribe aquí tus pruebas, una iteración a la vez.
 });
