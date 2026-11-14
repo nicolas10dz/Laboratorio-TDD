@@ -129,5 +129,4 @@ describe('Iteración 7: IVA y total a pagar', () => {
   });
 });
 
-  // Escribe aquí tus pruebas, una iteración a la vez.
 });
